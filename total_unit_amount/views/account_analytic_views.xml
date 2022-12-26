@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!-- Timesheet line add column 'total unit amount' -->
+    <!-- input in to odoo/addons/hr_timesheet/views/hr_timesheet_views.xml in hr_timesheet_line_tree -->
+
+    <record id="view_account_analytic_line_tree_inherit_total_amount" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.amount</field> <!-- View name -->
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/> <!-- parent views -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="before">
+                <field name="total_unit_amount" string="Total Unit Amount" widget="timesheet_uom" sum="Total"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
